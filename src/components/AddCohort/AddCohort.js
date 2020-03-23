@@ -41,6 +41,7 @@ export default function AddCohort() {
           <button type="submit">Add</button>
         </div>
       </form>
+      <hr />
     </>
   );
 }
