@@ -51,113 +51,116 @@ export default function AlumList() {
         setMonth('December');
         break;
     }
-  })
+  }, []);
+
+  const handleSubmit = () => {
+    
+  }
 
   return(
-    <>
-    <h1>Who Was Present?</h1>
+    <div className="list-container">
+      <h1>Who Was Present?</h1>
 
-    <form>
-      <div className="list-select-container">
-        <div className="list-select-cohort">
-          <label>Cohort: </label>
-          <select>
-            <option>cohort1</option>
-            <option>cohort2</option>
-          </select>
-        </div>
-
-        <div className="list-select-month-week">
-          <p>
-            {month} Week&nbsp;
-            <select onChange={(e)=>setWeek(e.target.value)}>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
+      <form onSubmit={handleSubmit}>
+        <div className="list-select-container">
+          <div className="list-select-cohort">
+            <label>Cohort: </label>
+            <select>
+              <option>cohort1</option>
+              <option>cohort2</option>
             </select>
-          </p>
+          </div>
+
+          <div className="list-select-month-week">
+            <p>
+              {month} Week&nbsp;
+              <select onChange={(e)=>setWeek(e.target.value)}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </select>
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* checkbox list of alum based on selected cohort */}
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Alum Standup</th>
-              <th>Alum Scrum</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ALUM 1</td>
-              <td>
-                <input
-                  type="checkbox"
-                  name="standup"
-                  // value={}
-                  // onChange={}
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  name="scrum"
-                  // value={}
-                  // onChange={}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>ALUM 2</td>
-              <td>
-                <input
-                  type="checkbox"
-                  name="standup"
-                  // value={}
-                  // onChange={}
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  name="scrum"
-                  // value={}
-                  // onChange={}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>ALUM 3</td>
-              <td>
-                <input
-                  type="checkbox"
-                  name="standup"
-                  // value={}
-                  // onChange={}
-                />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  name="scrum"
-                  // value={}
-                  // onChange={}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        {/* checkbox list of alum based on selected cohort */}
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Alum Standup</th>
+                <th>Alum Scrum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ALUM 1</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="standup"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="scrum"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>ALUM 2</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="standup"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="scrum"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>ALUM 3</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="standup"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="scrum"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div className="list-form-btn-container">
-        <button className="list-form-btn" type="submit">Submit</button>
-      </div>
-    </form>
-    <hr />
-    </>
+        <div className="list-form-btn-container">
+          <button className="list-form-btn" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   );
 }
