@@ -111,6 +111,44 @@ export default function AlumList() {
                 />
               </td>
             </tr>
+            <tr>
+              <td>ALUM 2</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="standup"
+                  // value={}
+                  // onChange={}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="scrum"
+                  // value={}
+                  // onChange={}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>ALUM 3</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="standup"
+                  // value={}
+                  // onChange={}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="scrum"
+                  // value={}
+                  // onChange={}
+                />
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
