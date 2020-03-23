@@ -153,8 +153,8 @@ export default function AlumList() {
         </table>
       </div>
 
-      <div>
-        <button type="submit">Submit</button>
+      <div className="list-form-btn-container">
+        <button className="list-form-btn" type="submit">Submit</button>
       </div>
     </form>
     <hr />
