@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './AlumList.css';
 
 export default function AlumList() {
 
@@ -55,25 +56,29 @@ export default function AlumList() {
   return(
     <>
     <h1>Who Was Present?</h1>
-    <form>
-      <div>
-        <select>
-          <option>cohort1</option>
-          <option>cohort2</option>
-        </select>
-      </div>
 
-      <div>
-        <p>
-          {month} Week&nbsp;
-          <select onChange={(e)=>setWeek(e.target.value)}>
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
+    <form>
+      <div className="list-select-container">
+        <div className="list-select-cohort">
+          <label>Cohort: </label>
+          <select>
+            <option>cohort1</option>
+            <option>cohort2</option>
           </select>
-        </p>
+        </div>
+
+        <div className="list-select-month-week">
+          <p>
+            {month} Week&nbsp;
+            <select onChange={(e)=>setWeek(e.target.value)}>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </select>
+          </p>
+        </div>
       </div>
 
       {/* checkbox list of alum based on selected cohort */}
