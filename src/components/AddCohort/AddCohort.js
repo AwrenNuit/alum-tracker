@@ -7,34 +7,61 @@ export default function AddCohort() {
 
   // const dispatch = useDispatch();
   // const cohortList = useSelector(state => state.cohorts); // this reducer holds cohort names from firebase
+  const [count, setCount] = useState(1);
   const [graduationDate, setGraduationDate] = useState('');
   const [newCohort, setNewCohort] = useState('');
-  const [student, setStudent] = useState('');
+  const [newStudent, setNewStudent] = useState('');
+  const [studentList, setStudentList] = useState([]);
 
   useEffect(()=>{
     // set reducer with firebase cohort names
   }, []);
 
+  useEffect(()=>{
+    setStudentList([...studentList, newStudent]);
+    setNewStudent('');
+  }, [count]);
+
+  const addStudentInput = () => {
+    let output = [];
+    for(let i=1; i<=count; i++){
+      output.push(<div className="add-student" key={i}>
+                    <label>Student #{i}: </label>
+                    <input 
+                      type="text" 
+                      value={studentList[i] || newStudent}
+                      onChange={(e)=>setNewStudent(e.target.value)}
+                      placeholder="student name"
+                    />
+                  </div>);
+    }
+    return output;
+  }
+
   const handleSubmit = e => {
     // add cohort to firebase list
     e.preventDefault();
-    if(newCohort !== '' && graduationDate !== '' && student !== ''){
+    if(newCohort !== '' && graduationDate !== '' && studentList !== ''){
       db.ref(`/cohorts/${newCohort}`).set({
         graduation: graduationDate
       });
       db.ref(`/cohorts/${newCohort}/students`).set({
-        student
+        studentList
       });
       // clearReducer();
       setGraduationDate('');
       setNewCohort('');
-      setStudent('');
+      setNewStudent('');
+      setStudentList('');
     }
   }
 
   return(
     <div className="main-container">
       <h1>Add a Cohort</h1>
+
+      {/* paragraph explaining how buttons and form work */}
+      
       <form onSubmit={handleSubmit}>
         <div className="add-cohort">
           <label>Cohort Name: </label>
@@ -53,17 +80,12 @@ export default function AddCohort() {
             onChange={(e)=>setGraduationDate(e.target.value)} 
           />
         </div>
-        {/* make number of student inputs dynamically generated with button */}
-        <div className="add-student">
-          <label>Student Name: </label>
-          <input 
-            type="text" 
-            value={student}
-            onChange={(e)=>setStudent(e.target.value)}
-            placeholder="student name"
-          />
-        </div>
-        {/* <button type="button" onClick={()=>setCount(count+1)}>+</button> */}
+
+        {/* add DELETE button next to input field to remove from hook */}
+        {addStudentInput()}
+
+        {/* display msg that student was saved, disable input field */}
+        <button type="button" onClick={setCount(count+1)}>Save & Add Another Student</button>
         <div>
           <button className="submit-btn" type="submit">Submit</button>
         </div>

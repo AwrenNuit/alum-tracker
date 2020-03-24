@@ -1,4 +1,9 @@
-.add-cohort, .add-graduation, .add-student {
+.add-cohort, .add-graduation {
   font-size: 1.2em;
   padding: 20px;
+}
+
+.add-student {
+  font-size: 1.2em;
+  padding: 5px;
 }
