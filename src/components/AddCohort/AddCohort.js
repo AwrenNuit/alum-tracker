@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { db } from '../../firebase';
 import './AddCohort.css';
 
 export default function AddCohort() {
@@ -14,8 +15,21 @@ export default function AddCohort() {
     // set reducer with firebase cohort names
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
     // add cohort to firebase list
+    e.preventDefault();
+    if(newCohort !== '' && graduationDate !== '' && student !== ''){
+      db.ref(`/cohorts/${newCohort}`).set({
+        graduation: graduationDate
+      });
+      db.ref(`/cohorts/${newCohort}/students`).set({
+        student
+      });
+      // clearReducer();
+      setGraduationDate('');
+      setNewCohort('');
+      setStudent('');
+    }
   }
 
   return(
