@@ -37,6 +37,7 @@ export default function AddCohort() {
                       value={studentList[i-1] || newStudent}
                       onChange={(e)=>setNewStudent(e.target.value)}
                       placeholder="student name"
+                      autoFocus
                     />
                   </div>);
     }
@@ -73,6 +74,10 @@ export default function AddCohort() {
               <li>Once you have all the students (there will be a blank input at the end) you can hit the "Submit" button</li>
               <li>Rinse & repeat for each cohort you want to add :)</li>
             </ul>
+          </div>
+          <div style={{marginTop:'20px'}}>
+            <p style={{fontWeight:'bold'}}>Current students:&nbsp;</p> 
+            {studentList.length !== 0 ? studentList.join(', ') : ''}
           </div>
         </div>
       </div>
