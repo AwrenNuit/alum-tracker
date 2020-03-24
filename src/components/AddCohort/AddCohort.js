@@ -6,7 +6,7 @@ import './AddCohort.css';
 export default function AddCohort() {
 
   const dispatch = useDispatch();
-  // const cohortList = useSelector(state => state.cohorts); // this reducer holds cohort names from firebase
+  const cohortList = useSelector(state => state.cohortListReducer);
   const [count, setCount] = useState(1);
   const [graduationDate, setGraduationDate] = useState('');
   const [newCohort, setNewCohort] = useState('');
