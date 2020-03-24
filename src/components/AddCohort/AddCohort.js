@@ -18,7 +18,12 @@ export default function AddCohort() {
   }, []);
 
   useEffect(()=>{
-    setStudentList([...studentList, newStudent]);
+    if(studentList[0] === ''){
+      setStudentList([newStudent]);
+    }
+    else {
+      setStudentList([...studentList, newStudent]);
+    }
     setNewStudent('');
   }, [count]);
 
@@ -29,7 +34,7 @@ export default function AddCohort() {
                     <label>Student #{i}: </label>
                     <input 
                       type="text" 
-                      value={studentList[i] || newStudent}
+                      value={studentList[i-1] || newStudent}
                       onChange={(e)=>setNewStudent(e.target.value)}
                       placeholder="student name"
                     />
@@ -39,13 +44,10 @@ export default function AddCohort() {
   }
 
   const handleSubmit = e => {
-    // add cohort to firebase list
     e.preventDefault();
     if(newCohort !== '' && graduationDate !== '' && studentList !== ''){
       db.ref(`/cohorts/${newCohort}`).set({
-        graduation: graduationDate
-      });
-      db.ref(`/cohorts/${newCohort}/students`).set({
+        graduation: graduationDate,
         studentList
       });
       // clearReducer();
@@ -63,15 +65,15 @@ export default function AddCohort() {
       <div className="add-directions-container">
         <div className="add-directions">
           <p style={{fontWeight:'bold'}}>To use:</p>
-            <div className="add-directions-list">
-              <ul>
-                <li>Enter the name of the cohort you wish to add</li>
-                <li>Select the date of they graduate</li>
-                <li>Enter a student's name, then click the "Save & Add Another Student" button to add it to the list</li>
-                <li>Once you have all the students (there will be a blank input at the end) you can hit the "Submit" button</li>
-                <li>Rinse & repeat for each cohort you want to add :)</li>
-              </ul>
-            </div>
+          <div className="add-directions-list">
+            <ul>
+              <li>Enter the name of the cohort you wish to add</li>
+              <li>Select the date of they graduate</li>
+              <li>Enter a student's name, then click the "Save & Add Another Student" button to add it to the list</li>
+              <li>Once you have all the students (there will be a blank input at the end) you can hit the "Submit" button</li>
+              <li>Rinse & repeat for each cohort you want to add :)</li>
+            </ul>
+          </div>
         </div>
       </div>
       
