@@ -60,7 +60,20 @@ export default function AddCohort() {
     <div className="main-container">
       <h1>Add a Cohort</h1>
 
-      {/* paragraph explaining how buttons and form work */}
+      <div className="add-directions-container">
+        <div className="add-directions">
+          <p style={{fontWeight:'bold'}}>To use:</p>
+            <div className="add-directions-list">
+              <ul>
+                <li>Enter the name of the cohort you wish to add</li>
+                <li>Select the date of they graduate</li>
+                <li>Enter a student's name, then click the "Save & Add Another Student" button to add it to the list</li>
+                <li>Once you have all the students (there will be a blank input at the end) you can hit the "Submit" button</li>
+                <li>Rinse & repeat for each cohort you want to add :)</li>
+              </ul>
+            </div>
+        </div>
+      </div>
       
       <form onSubmit={handleSubmit}>
         <div className="add-cohort">

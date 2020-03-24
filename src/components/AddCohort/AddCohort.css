@@ -3,6 +3,21 @@
   padding: 20px;
 }
 
+.add-directions {
+  display: inline-block;
+  max-width: 700px;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.add-directions-container {
+  text-align: center;
+}
+
+.add-directions-list {
+  margin: 10px 20px;
+}
+
 .add-student {
   font-size: 1.2em;
   padding: 5px;
