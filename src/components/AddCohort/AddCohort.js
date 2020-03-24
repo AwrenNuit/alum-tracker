@@ -5,7 +5,7 @@ import './AddCohort.css';
 
 export default function AddCohort() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const cohortList = useSelector(state => state.cohorts); // this reducer holds cohort names from firebase
   const [count, setCount] = useState(1);
   const [graduationDate, setGraduationDate] = useState('');
@@ -14,7 +14,20 @@ export default function AddCohort() {
   const [studentList, setStudentList] = useState([]);
 
   useEffect(()=>{
-    // set reducer with firebase cohort names
+    db.ref('cohorts').once(`value`, snap => {
+      snap.forEach(child => {
+        dispatch({type: `SET_COHORT_LIST`, payload: child.key});
+        // console.log('db child:', child.key); // For cohort list by key
+      });
+    });
+
+    // db.ref('cohorts/Trifid').once(`value`, snap => {
+    //   snap.forEach(child => {
+    //     // dispatch({type: `SET_THIS_COHORT`, payload: child.val()});
+    //     console.log('db child:', child.val()); // for data in this document
+    //   });
+    // });
+    
   }, []);
 
   useEffect(()=>{
