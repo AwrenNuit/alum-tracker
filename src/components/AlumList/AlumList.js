@@ -54,11 +54,11 @@ export default function AlumList() {
   }, []);
 
   const handleSubmit = () => {
-    
+
   }
 
   return(
-    <div className="list-container">
+    <div className="main-container">
       <h1>Who Was Present?</h1>
 
       <form onSubmit={handleSubmit}>
@@ -158,7 +158,7 @@ export default function AlumList() {
         </div>
 
         <div className="list-form-btn-container">
-          <button className="list-form-btn" type="submit">Submit</button>
+          <button className="submit-btn" type="submit">Submit</button>
         </div>
       </form>
     </div>
