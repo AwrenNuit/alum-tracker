@@ -10,6 +10,7 @@ export default function AlumList() {
   const cohortList = useSelector(state => state.cohortListReducer);
   const [alumPresent, setAlumPresent] = useState([]);
   const [month, setMonth] = useState('');
+  const [thisCohort, setThisCohort] = useState([]);
   const [week, setWeek] = useState('');
 
   useEffect(()=>{
@@ -62,11 +63,10 @@ export default function AlumList() {
     }
   }, []);
 
-  const cohortSelected = () => {
-    db.ref('cohorts/Trifid').once(`value`, snap => {
+  const selectedCohort = e => {
+    db.ref(`cohorts/${e.target.value}`).once(`value`, snap => {
       snap.forEach(child => {
-        // dispatch({type: `SET_THIS_COHORT`, payload: child.val()});
-        console.log('db child:', child.val()); // for data in this document
+        setThisCohort(child.val());
       });
     });
   }
@@ -78,12 +78,12 @@ export default function AlumList() {
   return(
     <div className="main-container">
       <h1>Who Was Present?</h1>
-
+      
       <form onSubmit={handleSubmit}>
         <div className="list-select-container">
           <div className="list-select-cohort">
             <label>Cohort: </label>
-            <select onChange={cohortSelected}>
+            <select onChange={selectedCohort}>
               {cohortList.map((cohort, i) =>
                 <option 
                 key={i}
