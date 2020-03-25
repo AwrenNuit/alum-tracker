@@ -57,6 +57,13 @@ export default function AddCohort() {
     return output;
   }
 
+  const checkAgainstList = () => {
+    if(cohortList.includes(newCohort)){
+      alert(`That cohort has already been added.`);
+      setNewCohort('');
+    }
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
     if(newCohort !== '' && graduationDate !== '' && studentList !== ''){
@@ -69,6 +76,7 @@ export default function AddCohort() {
       setNewCohort('');
       setNewStudent('');
       setStudentList('');
+      setCount(1);
     }
   }
 
@@ -82,7 +90,7 @@ export default function AddCohort() {
           <div className="add-directions-list">
             <ul>
               <li>Enter the name of the cohort you wish to add</li>
-              <li>Select the date of they graduate</li>
+              <li>Select the date that they graduate</li>
               <li>Enter a student's name, then click the "Save & Add Another Student" button to add it to the list</li>
               <li>Once you have all the students (there will be a blank input at the end) you can hit the "Submit" button</li>
               <li>Rinse & repeat for each cohort you want to add :)</li>
@@ -102,6 +110,7 @@ export default function AddCohort() {
             type="text" 
             value={newCohort} 
             onChange={(e)=>setNewCohort(e.target.value)} 
+            onBlur={checkAgainstList}
             placeholder="cohort name" 
           />
         </div>
