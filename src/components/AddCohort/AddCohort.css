@@ -22,3 +22,13 @@
   font-size: 1.2em;
   padding: 5px;
 }
+
+.add-student-btn {
+  margin: 10px 0 50px 0;
+  padding: 5px;
+  background: transparent;
+  border: 3px solid #07aa9e;
+  border-radius: 3px;
+  font-size: 0.8em;
+  cursor: pointer;
+}

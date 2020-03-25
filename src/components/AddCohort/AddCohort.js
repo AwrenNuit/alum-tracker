@@ -127,7 +127,7 @@ export default function AddCohort() {
         {addStudentInput()}
 
         {/* display msg that student was saved, disable input field */}
-        <button type="button" onClick={()=>setCount(count+1)}>Save & Add Another Student</button>
+        <button className="add-student-btn" type="button" onClick={()=>setCount(count+1)}>Save & Add Another Student</button>
         <div>
           <button className="submit-btn" type="submit">Submit</button>
         </div>
