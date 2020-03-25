@@ -31,4 +31,9 @@
   border-radius: 3px;
   font-size: 0.8em;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-student-btn:hover {
+  background-color: #e0f7f4;
 }
