@@ -75,10 +75,36 @@ export default function AlumList() {
 
   }
 
+  function populateTable(){
+    let output = [];
+    for(let i=0; i<thisCohort.length; i++){
+      output.push(<tr key={i}>
+                <td>{thisCohort[i]}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="standup"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="scrum"
+                    // value={}
+                    // onChange={}
+                  />
+                </td>
+              </tr>);
+    }
+    return output;
+  }
+
   return(
     <div className="main-container">
       <h1>Who Was Present?</h1>
-      
+
       <form onSubmit={handleSubmit}>
         <div className="list-select-container">
           <div className="list-select-cohort">
@@ -120,63 +146,7 @@ export default function AlumList() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>ALUM 1</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="standup"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="scrum"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>ALUM 2</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="standup"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="scrum"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>ALUM 3</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="standup"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="scrum"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-              </tr>
+              {populateTable()}
             </tbody>
           </table>
         </div>
