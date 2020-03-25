@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './AlumList.css';
+import { db } from '../../firebase';
 
 export default function AlumList() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const alumList = useSelector(state => state.alum); // reducer holds alum list from firebase
-  // const cohortList = useSelector(state => state.cohorts); // reducer holds cohort list from firebase
+  const cohortList = useSelector(state => state.cohortListReducer);
   const [alumPresent, setAlumPresent] = useState([]);
   const [month, setMonth] = useState('');
   const [week, setWeek] = useState('');
+
+  useEffect(()=>{
+    db.ref('cohorts').once(`value`, snap => {
+      snap.forEach(child => {
+        dispatch({type: `SET_COHORT_LIST`, payload: child.key});
+      });
+    });
+  }, []);
 
   useEffect(()=>{
     let date = new Date().getMonth();
@@ -53,6 +62,15 @@ export default function AlumList() {
     }
   }, []);
 
+  const cohortSelected = () => {
+    db.ref('cohorts/Trifid').once(`value`, snap => {
+      snap.forEach(child => {
+        // dispatch({type: `SET_THIS_COHORT`, payload: child.val()});
+        console.log('db child:', child.val()); // for data in this document
+      });
+    });
+  }
+
   const handleSubmit = () => {
 
   }
@@ -65,9 +83,15 @@ export default function AlumList() {
         <div className="list-select-container">
           <div className="list-select-cohort">
             <label>Cohort: </label>
-            <select>
-              <option>cohort1</option>
-              <option>cohort2</option>
+            <select onChange={cohortSelected}>
+              {cohortList.map((cohort, i) =>
+                <option 
+                key={i}
+                value={cohort}
+              >
+                {cohort}
+              </option>
+              )}
             </select>
           </div>
 
