@@ -9,6 +9,7 @@ export default function AlumList() {
   // const alumList = useSelector(state => state.alum); // reducer holds alum list from firebase
   const cohortList = useSelector(state => state.cohortListReducer);
   const [alumPresent, setAlumPresent] = useState([]);
+  const [cohortSelected, setCohortSelected] = useState('');
   const [month, setMonth] = useState('');
   const [thisCohort, setThisCohort] = useState([]);
   const [week, setWeek] = useState('');
@@ -60,10 +61,13 @@ export default function AlumList() {
       case 11:
         setMonth('December');
         break;
+      default:
+        break;
     }
   }, []);
 
   const selectedCohort = e => {
+    setCohortSelected(e.target.value);
     db.ref(`cohorts/${e.target.value}`).once(`value`, snap => {
       snap.forEach(child => {
         setThisCohort(child.val());
@@ -109,7 +113,8 @@ export default function AlumList() {
         <div className="list-select-container">
           <div className="list-select-cohort">
             <label>Cohort: </label>
-            <select onChange={selectedCohort}>
+            <select value={cohortSelected} onChange={selectedCohort}>
+              <option value='' disabled>Select Cohort</option>
               {cohortList.map((cohort, i) =>
                 <option 
                 key={i}
@@ -124,7 +129,8 @@ export default function AlumList() {
           <div className="list-select-month-week">
             <p>
               {month} Week&nbsp;
-              <select onChange={(e)=>setWeek(e.target.value)}>
+              <select value={week} onChange={(e)=>setWeek(e.target.value)}>
+                <option value='' disabled>?</option>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
