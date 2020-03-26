@@ -8,9 +8,10 @@ export default function AlumList() {
   const dispatch = useDispatch();
   // const alumList = useSelector(state => state.alum); // reducer holds alum list from firebase
   const cohortList = useSelector(state => state.cohortListReducer);
-  const [alumPresent, setAlumPresent] = useState([]);
   const [cohortSelected, setCohortSelected] = useState('');
   const [month, setMonth] = useState('');
+  const [scrum, setScrum] = useState([]);
+  const [standup, setStandup] = useState([]);
   const [thisCohort, setThisCohort] = useState([]);
   const [week, setWeek] = useState('');
 
@@ -75,6 +76,16 @@ export default function AlumList() {
     });
   }
 
+  const handleCheckbox = (e, hook, set) => {
+    const name = e.target.value;
+    if(e.target.checked){
+      set([...hook, e.target.value]);
+    }
+    else {
+      set(hook.filter((e)=>(e !== name)));
+    }
+  }
+
   const handleSubmit = () => {
 
   }
@@ -83,24 +94,22 @@ export default function AlumList() {
     let output = [];
     for(let i=0; i<thisCohort.length; i++){
       output.push(<tr key={i}>
-                <td>{thisCohort[i]}</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="standup"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    name="scrum"
-                    // value={}
-                    // onChange={}
-                  />
-                </td>
-              </tr>);
+                    <td>{thisCohort[i]}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        value={thisCohort[i]}
+                        onChange={(e)=>handleCheckbox(e, standup, setStandup)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        value={thisCohort[i]}
+                        onChange={(e)=>handleCheckbox(e, scrum, setScrum)}
+                      />
+                    </td>
+                  </tr>);
     }
     return output;
   }
@@ -141,7 +150,6 @@ export default function AlumList() {
           </div>
         </div>
 
-        {/* checkbox list of alum based on selected cohort */}
         <div>
           <table>
             <thead>
