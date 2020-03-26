@@ -6,7 +6,6 @@ import { db } from '../../firebase';
 export default function AlumList() {
 
   const dispatch = useDispatch();
-  // const alumList = useSelector(state => state.alum); // reducer holds alum list from firebase
   const cohortList = useSelector(state => state.cohortListReducer);
   const [cohortSelected, setCohortSelected] = useState('');
   const [month, setMonth] = useState('');
