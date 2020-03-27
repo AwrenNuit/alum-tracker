@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import AttendanceTally from '../AttendanceTally/AttendanceTally';
+import AttendanceNames from '../AttendanceNames/AttendanceNames';
 
 export default function Attendance() {
 
