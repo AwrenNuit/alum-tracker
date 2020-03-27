@@ -85,8 +85,20 @@ export default function AlumList() {
     }
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = e => {
+    e.preventDefault();
+    if(cohortSelected !== '' && week !== ''){
+      db.ref(`/scrum/${month}/week ${week}/${cohortSelected}`).set({present:scrum});
+      db.ref(`/standup/${month}/week ${week}/${cohortSelected}`).set({present:standup});
+      setCohortSelected('');
+      setScrum([]);
+      setStandup([]);
+      setThisCohort([]);
+      setWeek('');
+    }
+    else {
+      alert(`Make sure you selected a cohort and the week`);
+    }
   }
 
   function populateTable(){
