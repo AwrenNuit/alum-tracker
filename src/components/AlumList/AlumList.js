@@ -129,6 +129,22 @@ export default function AlumList() {
     <div className="main-container">
       <h1>Who Was Present?</h1>
 
+      <div className="add-directions-container">
+        <div className="add-directions">
+          <p style={{fontWeight:'bold'}}>To use:</p>
+          <div className="add-directions-list">
+            <ul>
+              <li>Select a cohort</li>
+              <li>Select the week of the month this is for</li>
+              <li>Use checkboxes to choose who was present</li>
+              <li>Click "Submit"</li>
+              <li>Rinse & repeat for each cohort who had students present</li>
+              <li>You can re-submit it to overwrite the existing data in case you made a mistake</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <div className="list-select-container">
           <div className="list-select-cohort">
@@ -148,7 +164,7 @@ export default function AlumList() {
 
           <div className="list-select-month-week">
             <p>
-              {month} Week&nbsp;
+              {month}: Week&nbsp;
               <select value={week} onChange={(e)=>setWeek(e.target.value)}>
                 <option value='' disabled>?</option>
                 <option value={1}>1</option>
