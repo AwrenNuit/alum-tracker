@@ -7,10 +7,12 @@ export default function AttendanceNames() {
       <table>
         <thead>
           <tr>
-            <th>Month</th>
-            <th>Week</th>
-            <th>Event</th>
-            <th>Alum Present</th>
+            <th>Month & Week</th>
+            <th>Month & Week</th>
+          </tr>
+          <tr>
+            <th>Alumni Standup</th>
+            <th>Alum Scrum</th>
           </tr>
         </thead>
         <tbody>

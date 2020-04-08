@@ -88,8 +88,8 @@ export default function AlumList() {
   const handleSubmit = e => {
     e.preventDefault();
     if(cohortSelected !== '' && week !== ''){
-      db.ref(`/scrum/${month}/week ${week}/${cohortSelected}`).set({present:scrum});
-      db.ref(`/standup/${month}/week ${week}/${cohortSelected}`).set({present:standup});
+      db.ref(`/scrum/${month} week ${week}`).set({[cohortSelected]:scrum});
+      db.ref(`/standup/${month} week ${week}`).set({[cohortSelected]:standup});
       setCohortSelected('');
       setScrum([]);
       setStandup([]);
