@@ -11,6 +11,7 @@ export default function Attendance() {
   // const cohortPresentList = useSelector(state => state.cohortPresentListReducer);
   // const monthList = useSelector(state => state.monthListReducer);
   // const weekList = useSelector(state => state.weekListReducer);
+  const [alum, setAlum] = useState([]);
   const tallyList = useSelector(state => state.tallyListReducer);
   const [choice, setChoice] = useState('');
 
@@ -22,11 +23,24 @@ export default function Attendance() {
     });
   }, []);
 
-  const thing = () => {
-    if(tallyList && tallyList[0]){
-      return JSON.stringify(tallyList[0].April_week_1.Chien.length);
+  useEffect(()=>{
+    if(tallyList){
+      let monthKey = '';
+      let cohortKey = '';
+      let present = [];
+
+      for(let i=0; i<tallyList.length; i++) {
+        if(!monthKey.includes(tallyList[i])){
+          monthKey = Object.keys(tallyList[i]);
+          for(let j=0; j<tallyList.length; j++) {
+            cohortKey = Object.keys(tallyList[i][monthKey])[j];
+            present.push({[cohortKey]: tallyList[i][monthKey][cohortKey]});
+          }
+        }
+      }
+      setAlum(present);
     }
-  }
+  }, [tallyList]);
 
   return(
     <div className="main-container">
@@ -35,9 +49,7 @@ export default function Attendance() {
       {JSON.stringify(tallyList)}
       <br />
       <br />
-      {thing()}
-      <br />
-      <br />
+      {JSON.stringify(alum)}
 
       {/* {Object.entries(tallyList).map((m,i)=>
         <div key={i}>{m}</div>
