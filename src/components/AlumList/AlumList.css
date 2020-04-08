@@ -3,6 +3,13 @@
   text-align: center;
 }
 
+.list-label {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 0;
+  width: 100%;
+}
+
 .list-select-cohort {
   padding: 20px;
 }

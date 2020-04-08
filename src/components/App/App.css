@@ -28,7 +28,6 @@ tbody tr:hover {
 th, td {
   border: 1px solid black;
   min-width: 200px;
-  padding: 10px;
 }
 
 .main-container {

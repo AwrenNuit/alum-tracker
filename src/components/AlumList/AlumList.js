@@ -107,18 +107,22 @@ export default function AlumList() {
       output.push(<tr key={i}>
                     <td>{thisCohort[i]}</td>
                     <td>
-                      <input
-                        type="checkbox"
-                        value={thisCohort[i]}
-                        onChange={(e)=>handleCheckbox(e, standup, setStandup)}
-                      />
+                      <label class="list-label">
+                        <input
+                          type="checkbox"
+                          value={thisCohort[i]}
+                          onChange={(e)=>handleCheckbox(e, standup, setStandup)}
+                        />
+                      </label>
                     </td>
                     <td>
-                      <input
-                        type="checkbox"
-                        value={thisCohort[i]}
-                        onChange={(e)=>handleCheckbox(e, scrum, setScrum)}
-                      />
+                      <label class="list-label">
+                        <input
+                          type="checkbox"
+                          value={thisCohort[i]}
+                          onChange={(e)=>handleCheckbox(e, scrum, setScrum)}
+                        />
+                      </label>
                     </td>
                   </tr>);
     }

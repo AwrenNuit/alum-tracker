@@ -22,11 +22,33 @@ export default function Attendance() {
     });
   }, []);
 
+  const thing = () => {
+    if(tallyList && tallyList[0]){
+      return JSON.stringify(tallyList[0].April.week2.Prime.present)
+    }
+  }
+
   return(
     <div className="main-container">
       <h1>Attendance List</h1>
 
       {JSON.stringify(tallyList)}
+      <br />
+      <br />
+      {thing()}
+      <br />
+      <br />
+      {JSON.stringify(tallyList.length)}
+      <br />
+      <br />
+      {/* {Object.entries(tallyList).map((m,i)=>
+        <div key={i}>{m}</div>
+      )} */}
+      {/* {tallyList && tallyList[0] ? tallyList[0].map((m,i)=>
+        <div key={i}>{m}</div>
+      )
+    :
+    ''} */}
       
       <div>
         <p>Which would you like to see?</p>
@@ -39,6 +61,10 @@ export default function Attendance() {
             <label>Names</label>
         </div>
       </div>
+
+      {/* {tallyList.map((m,i)=>
+        <div key={i}>{m}</div>
+      )} */}
 
       {choice === 'tally' ? <AttendanceTally /> : ''}
       {choice === 'names' ? <AttendanceNames /> : ''}
