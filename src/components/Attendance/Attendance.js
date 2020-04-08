@@ -22,11 +22,11 @@ export default function Attendance() {
     });
   }, []);
 
-  const thing = () => {
-    if(tallyList && tallyList[0]){
-      return JSON.stringify(tallyList[0].April.week2.Prime.present)
-    }
-  }
+  // const thing = () => {
+  //   if(tallyList && tallyList[0]){
+  //     return JSON.stringify(tallyList[0].April.week2.Prime.present)
+  //   }
+  // }
 
   return(
     <div className="main-container">
@@ -35,7 +35,7 @@ export default function Attendance() {
       {JSON.stringify(tallyList)}
       <br />
       <br />
-      {thing()}
+      {/* {thing()} */}
       <br />
       <br />
       {JSON.stringify(tallyList.length)}
