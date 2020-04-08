@@ -22,11 +22,11 @@ export default function Attendance() {
     });
   }, []);
 
-  // const thing = () => {
-  //   if(tallyList && tallyList[0]){
-  //     return JSON.stringify(tallyList[0].April.week2.Prime.present)
-  //   }
-  // }
+  const thing = () => {
+    if(tallyList && tallyList[0]){
+      return JSON.stringify(tallyList[0].April_week_1.Chien.length);
+    }
+  }
 
   return(
     <div className="main-container">
@@ -35,12 +35,10 @@ export default function Attendance() {
       {JSON.stringify(tallyList)}
       <br />
       <br />
-      {/* {thing()} */}
+      {thing()}
       <br />
       <br />
-      {JSON.stringify(tallyList.length)}
-      <br />
-      <br />
+
       {/* {Object.entries(tallyList).map((m,i)=>
         <div key={i}>{m}</div>
       )} */}
