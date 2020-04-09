@@ -34,14 +34,23 @@ export default function Attendance() {
       let alumTally = [];
 
       for(let i=0; i<allData.length; i++) {
+        // push month & week into array
         monthList.push(Object.keys(allData[i]));
+
+        // if next month name is different, update it
         if(!monthKey.includes(allData[i])){
           monthKey = Object.keys(allData[i]);
-          // alumTally.push({[monthKey]: allData[i][monthKey]});
-          for(let j=0; j<allData.length; j++) {
+
+          // loop through cohorts with students present that month & week
+          for(let j=0; j<Object.keys(allData[i][monthKey]).length; j++) {
+
+            // set cohort name to variable
             cohortKey = Object.keys(allData[i][monthKey])[j];
+
+            // push object to array with cohort name as key and student list as value
             alumPresent.push({[cohortKey]: allData[i][monthKey][cohortKey]});
-            // alumTally.push({[monthKey]: allData[i][monthKey][cohortKey]});
+
+            // push object to array with month as key and student list as value
             alumTally.push({[monthKey]: allData[i][monthList[i]][cohortKey]});
           }
         }
@@ -56,13 +65,13 @@ export default function Attendance() {
     <div className="main-container">
       <h1>Attendance List</h1>
 
-      {/* {JSON.stringify(allData)}
+      {/* {JSON.stringify(allData)} */}
       <br />
       <br />
-      {JSON.stringify(alum)}
+      {/* {JSON.stringify(alum)} */}
       <br />
       <br />
-      {JSON.stringify(tally)} */}
+      {JSON.stringify(tally)}
       
       <div>
         <p>Which would you like to see?</p>
