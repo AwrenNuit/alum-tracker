@@ -11,9 +11,10 @@ export default function Attendance() {
   // const cohortPresentList = useSelector(state => state.cohortPresentListReducer);
   // const monthList = useSelector(state => state.monthListReducer);
   // const weekList = useSelector(state => state.weekListReducer);
+  const allData = useSelector(state => state.allDataReducer);
   const [alum, setAlum] = useState([]);
-  const tallyList = useSelector(state => state.tallyListReducer);
   const [choice, setChoice] = useState('');
+  const [tally, setTally] = useState([]);
 
   useEffect(()=>{
     db.ref('scrum').once(`value`, snap => {
@@ -24,37 +25,37 @@ export default function Attendance() {
   }, []);
 
   useEffect(()=>{
-    if(tallyList){
+    if(allData){
       let monthKey = '';
       let cohortKey = '';
       let present = [];
 
-      for(let i=0; i<tallyList.length; i++) {
-        if(!monthKey.includes(tallyList[i])){
-          monthKey = Object.keys(tallyList[i]);
-          for(let j=0; j<tallyList.length; j++) {
-            cohortKey = Object.keys(tallyList[i][monthKey])[j];
-            present.push({[cohortKey]: tallyList[i][monthKey][cohortKey]});
+      for(let i=0; i<allData.length; i++) {
+        if(!monthKey.includes(allData[i])){
+          monthKey = Object.keys(allData[i]);
+          for(let j=0; j<allData.length; j++) {
+            cohortKey = Object.keys(allData[i][monthKey])[j];
+            present.push({[cohortKey]: allData[i][monthKey][cohortKey]});
           }
         }
       }
       setAlum(present);
     }
-  }, [tallyList]);
+  }, [allData]);
 
   return(
     <div className="main-container">
       <h1>Attendance List</h1>
 
-      {JSON.stringify(tallyList)}
+      {JSON.stringify(allData)}
       <br />
       <br />
       {JSON.stringify(alum)}
 
-      {/* {Object.entries(tallyList).map((m,i)=>
+      {/* {Object.entries(allData).map((m,i)=>
         <div key={i}>{m}</div>
       )} */}
-      {/* {tallyList && tallyList[0] ? tallyList[0].map((m,i)=>
+      {/* {allData && allData[0] ? allData[0].map((m,i)=>
         <div key={i}>{m}</div>
       )
     :
@@ -72,7 +73,7 @@ export default function Attendance() {
         </div>
       </div>
 
-      {/* {tallyList.map((m,i)=>
+      {/* {allData.map((m,i)=>
         <div key={i}>{m}</div>
       )} */}
 
