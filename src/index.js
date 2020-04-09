@@ -4,9 +4,20 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App/App';
 
-const allDataReducer = (state=[], action) => {
+const allScrumDataReducer = (state=[], action) => {
   switch(action.type){
-    case `SET_TALLY_LIST`:
+    case `SET_SCRUM_LIST`:
+      return [...state, action.payload];
+    case `CLEAR_TALLY_LIST`:
+      return [];
+    default:
+      return state;
+  }
+}
+
+const allStandupDataReducer = (state=[], action) => {
+  switch(action.type){
+    case `SET_STANDUP_LIST`:
       return [...state, action.payload];
     case `CLEAR_TALLY_LIST`:
       return [];
@@ -28,7 +39,8 @@ const cohortListReducer = (state=[], action) => {
 
 const store = createStore(
   combineReducers({
-    allDataReducer,
+    allScrumDataReducer,
+    allStandupDataReducer,
     cohortListReducer,
   })
 );
