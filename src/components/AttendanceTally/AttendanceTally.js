@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 
 export default function AttendanceTally(props) {
 
   const [scrumTotal, setScrumTotal] = useState('');
 
-  const getTallyoutput = () => {
+  useEffect(()=>{
     let prevMonth = '';
     let alum = [];
     let output = [];
@@ -33,12 +33,10 @@ export default function AttendanceTally(props) {
       }
     }
     setScrumTotal(output);
-  }
+  }, []);
 
   return(
     <div>
-      {JSON.stringify(scrumTotal)}
-      {!scrumTotal ? getTallyoutput() : ''}
       <table>
         <thead>
           <tr>
@@ -49,18 +47,18 @@ export default function AttendanceTally(props) {
         </thead>
         <tbody>
           {props.month.map((month, i)=>
-          <Fragment key={i}>
-            <tr>
-              <td>{month.replace(/_/g, " ")}</td>
-              <td>Standup</td>
-              <td># alum present</td>
-            </tr>
-            <tr>
-              <td>{month.replace(/_/g, " ")}</td>
-              <td>Scrum</td>
-              <td># alum present</td>
-            </tr>
-          </Fragment>
+            <Fragment key={i}>
+              <tr>
+                <td>{month.replace(/_/g, " ")}</td>
+                <td>Standup</td>
+                <td># alum present</td>
+              </tr>
+              <tr>
+                <td>{month.replace(/_/g, " ")}</td>
+                <td>Scrum</td>
+                <td>{scrumTotal[i]}</td>
+              </tr>
+            </Fragment>
           )}
         </tbody>
       </table>
