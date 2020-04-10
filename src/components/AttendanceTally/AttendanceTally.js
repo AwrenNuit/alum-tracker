@@ -44,7 +44,7 @@ export default function AttendanceTally(props) {
 
   return(
     <div>
-      <table>
+      <table className="table">
         <thead>
           <tr className="tr">
           <th className="th">Month & Week</th>

@@ -35,7 +35,6 @@ export default function Attendance() {
       let monthKey = '';
       let monthList = [];
       let cohortKey = '';
-      let alumScrumPresent = [];
       let alumScrumTally = [];
 
       for(let i=0; i<allScrumData.length; i++) {
@@ -48,15 +47,12 @@ export default function Attendance() {
           for(let j=0; j<Object.keys(allScrumData[i][monthKey]).length; j++) {
             // set cohort name to variable
             cohortKey = Object.keys(allScrumData[i][monthKey])[j];
-            // push object to array with cohort name as key and student list as value
-            alumScrumPresent.push({[cohortKey]: allScrumData[i][monthKey][cohortKey]});
             // push object to array with month as key and student list as value
             alumScrumTally.push({[monthKey]: allScrumData[i][monthList[i]][cohortKey]});
           }
         }
       }
       setMonth(monthList.flat(Infinity));
-      setScrumNames(alumScrumPresent);
       setScrumTally(alumScrumTally);
     }
   }, [allScrumData]);
@@ -67,7 +63,6 @@ export default function Attendance() {
       let monthKey = '';
       let monthList = [];
       let cohortKey = '';
-      let alumStandupPresent = [];
       let alumStandupTally = [];
 
       for(let i=0; i<allStandupData.length; i++) {
@@ -80,15 +75,11 @@ export default function Attendance() {
           for(let j=0; j<Object.keys(allStandupData[i][monthKey]).length; j++) {
             // set cohort name to variable
             cohortKey = Object.keys(allStandupData[i][monthKey])[j];
-            // push object to array with cohort name as key and student list as value
-            alumStandupPresent.push({[cohortKey]: allStandupData[i][monthKey][cohortKey]});
             // push object to array with month as key and student list as value
             alumStandupTally.push({[monthKey]: allStandupData[i][monthList[i]][cohortKey]});
           }
         }
       }
-      setMonth(monthList.flat(Infinity));
-      setStandupNames(alumStandupPresent);
       setStandupTally(alumStandupTally);
     }
   }, [allStandupData]);
@@ -108,8 +99,16 @@ export default function Attendance() {
         </div>
       </div>
 
-      {choice === 'tally' ? <AttendanceTally month={month} scrumTally={scrumTally} standupTally={standupTally} /> : ''}
-      {choice === 'names' ? <AttendanceNames month={month} scrumNames={scrumNames} standupNames={standupNames} /> : ''}
+      {choice === 'tally' ? 
+        <AttendanceTally month={month} scrumTally={scrumTally} standupTally={standupTally} /> 
+      : 
+        ''
+      }
+      {choice === 'names' ? 
+        <AttendanceNames month={month} scrumNames={allScrumData} standupNames={allStandupData} /> 
+      : 
+        ''
+      }
 
     </div>
   );
