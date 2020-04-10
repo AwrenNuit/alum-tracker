@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
+import './AttendanceTally.css';
 
-export default function AttendancescrumTally(props) {
+export default function AttendanceTally(props) {
 
   const [scrumTotal, setScrumTotal] = useState('');
   const [standupTotal, setStandupTotal] = useState('');
@@ -72,24 +73,24 @@ export default function AttendancescrumTally(props) {
     <div>
       <table>
         <thead>
-          <tr>
-          <th>Month & Week</th>
-          <th>Event</th>
-          <th>Attendance</th>
+          <tr class="tr">
+          <th class="th">Month & Week</th>
+          <th class="th">Event</th>
+          <th class="th">Attendance</th>
           </tr>
         </thead>
         <tbody>
           {props.month.map((month, i)=>
             <Fragment key={i}>
-              <tr>
-                <td>{month.replace(/_/g, " ")}</td>
-                <td>Standup</td>
-                <td>{standupTotal[i]}</td>
+              <tr class="tr">
+                <td class="td">{month.replace(/_/g, " ")}</td>
+                <td class="td">Standup</td>
+                <td class="td">{standupTotal[i]}</td>
               </tr>
-              <tr>
-                <td>{month.replace(/_/g, " ")}</td>
-                <td>Scrum</td>
-                <td>{scrumTotal[i]}</td>
+              <tr class="tr">
+                <td class="td">{month.replace(/_/g, " ")}</td>
+                <td class="td">Scrum</td>
+                <td class="td">{scrumTotal[i]}</td>
               </tr>
             </Fragment>
           )}

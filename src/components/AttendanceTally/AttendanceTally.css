@@ -1,0 +1,11 @@
+.tr:nth-child(4n), .tr:nth-child(4n-1) {
+  background-color: #eee;
+}
+
+.tr:nth-child(4n-2), .tr:nth-child(4n-3) {
+  background: transparent;
+}
+
+.td, .th {
+  padding: 10px 20px;
+}
