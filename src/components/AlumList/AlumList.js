@@ -104,10 +104,10 @@ export default function AlumList() {
   function populateTable(){
     let output = [];
     for(let i=0; i<thisCohort.length; i++){
-      output.push(<tr key={i}>
+      output.push(<tr  className="list-tr" key={i}>
                     <td>{thisCohort[i]}</td>
                     <td>
-                      <label class="list-label">
+                      <label className="list-label">
                         <input
                           type="checkbox"
                           value={thisCohort[i]}
@@ -116,7 +116,7 @@ export default function AlumList() {
                       </label>
                     </td>
                     <td>
-                      <label class="list-label">
+                      <label className="list-label">
                         <input
                           type="checkbox"
                           value={thisCohort[i]}
