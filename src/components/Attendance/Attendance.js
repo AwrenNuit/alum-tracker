@@ -108,8 +108,8 @@ export default function Attendance() {
         </div>
       </div>
 
-      {choice === 'tally' ? <AttendanceTally month={month} scrumTally={scrumTally} /> : ''}
-      {choice === 'names' ? <AttendanceNames /> : ''}
+      {choice === 'tally' ? <AttendanceTally month={month} scrumTally={scrumTally} standupTally={standupTally} /> : ''}
+      {choice === 'names' ? <AttendanceNames month={month} scrumNames={scrumNames} standupNames={standupNames} /> : ''}
 
     </div>
   );
