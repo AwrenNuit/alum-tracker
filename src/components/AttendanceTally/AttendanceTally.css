@@ -1,11 +1,23 @@
-.tr:nth-child(4n), .tr:nth-child(4n-1) {
+.tbody:nth-child(2n-1) {
   background-color: #eee;
 }
 
-.tr:nth-child(4n-2), .tr:nth-child(4n-3) {
-  background: transparent;
+.tbody:nth-child(2n) {
+  background-color: transparent;
+}
+
+.tbody:hover {
+  background-color: #a7ccca;
 }
 
 .td, .th {
   padding: 10px 20px;
 }
+
+/* .tr:nth-child(4n), .tr:nth-child(4n-1) {
+  background-color: #eee;
+}
+
+.tr:nth-child(4n-2), .tr:nth-child(4n-3) {
+  background: transparent; */
+/* } */

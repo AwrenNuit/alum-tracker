@@ -73,28 +73,28 @@ export default function AttendanceTally(props) {
     <div>
       <table>
         <thead>
-          <tr class="tr">
-          <th class="th">Month & Week</th>
-          <th class="th">Event</th>
-          <th class="th">Attendance</th>
+          <tr className="tr">
+          <th className="th">Month & Week</th>
+          <th className="th">Event</th>
+          <th className="th">Attendance</th>
           </tr>
         </thead>
-        <tbody>
+        {/* <tbody> */}
           {props.month.map((month, i)=>
-            <Fragment key={i}>
-              <tr class="tr">
-                <td class="td">{month.replace(/_/g, " ")}</td>
-                <td class="td">Standup</td>
-                <td class="td">{standupTotal[i]}</td>
+            <tbody className="tbody" key={i}>
+              <tr className="tr">
+                <td className="td">{month.replace(/_/g, " ")}</td>
+                <td className="td">Standup</td>
+                <td className="td">{standupTotal[i]}</td>
               </tr>
-              <tr class="tr">
-                <td class="td">{month.replace(/_/g, " ")}</td>
-                <td class="td">Scrum</td>
-                <td class="td">{scrumTotal[i]}</td>
+              <tr className="tr">
+                <td className="td">{month.replace(/_/g, " ")}</td>
+                <td className="td">Scrum</td>
+                <td className="td">{scrumTotal[i]}</td>
               </tr>
-            </Fragment>
+            </tbody>
           )}
-        </tbody>
+        {/* </tbody> */}
       </table>
     </div>
   );
