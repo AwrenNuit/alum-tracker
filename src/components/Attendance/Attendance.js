@@ -28,60 +28,30 @@ export default function Attendance() {
     });
   }, []);
 
-  // For alum scrum events
   useEffect(()=>{
-    if(allScrumData){
+    setData(allScrumData, setScrumTally);
+    setData(allStandupData, setStandupTally);
+  }, [allScrumData, allStandupData]);
+
+  const setData = (data, tally)=> {
       let monthKey = '';
       let monthList = [];
       let cohortKey = '';
-      let alumScrumTally = [];
+      let alumTally = [];
 
-      for(let i=0; i<allScrumData.length; i++) {
-        // push month & week into array
-        monthList.push(Object.keys(allScrumData[i]));
-        // if next month name is different, update it
-        if(!monthKey.includes(allScrumData[i])){
-          monthKey = Object.keys(allScrumData[i]);
-          // loop through cohorts with students present that month & week
-          for(let j=0; j<Object.keys(allScrumData[i][monthKey]).length; j++) {
-            // set cohort name to variable
-            cohortKey = Object.keys(allScrumData[i][monthKey])[j];
-            // push object to array with month as key and student list as value
-            alumScrumTally.push({[monthKey]: allScrumData[i][monthList[i]][cohortKey]});
+      for(let i=0; i<data.length; i++) {
+        monthList.push(Object.keys(data[i]));
+        if(!monthKey.includes(data[i])){
+          monthKey = Object.keys(data[i]);
+          for(let j=0; j<Object.keys(data[i][monthKey]).length; j++) {
+            cohortKey = Object.keys(data[i][monthKey])[j];
+            alumTally.push({[monthKey]: data[i][monthList[i]][cohortKey]});
           }
         }
       }
       setMonth(monthList.flat(Infinity));
-      setScrumTally(alumScrumTally);
+      tally(alumTally);
     }
-  }, [allScrumData]);
-
-  // For alum standups
-  useEffect(()=>{
-    if(allStandupData){
-      let monthKey = '';
-      let monthList = [];
-      let cohortKey = '';
-      let alumStandupTally = [];
-
-      for(let i=0; i<allStandupData.length; i++) {
-        // push month & week into array
-        monthList.push(Object.keys(allStandupData[i]));
-        // if next month name is different, update it
-        if(!monthKey.includes(allStandupData[i])){
-          monthKey = Object.keys(allStandupData[i]);
-          // loop through cohorts with students present that month & week
-          for(let j=0; j<Object.keys(allStandupData[i][monthKey]).length; j++) {
-            // set cohort name to variable
-            cohortKey = Object.keys(allStandupData[i][monthKey])[j];
-            // push object to array with month as key and student list as value
-            alumStandupTally.push({[monthKey]: allStandupData[i][monthList[i]][cohortKey]});
-          }
-        }
-      }
-      setStandupTally(alumStandupTally);
-    }
-  }, [allStandupData]);
 
   return(
     <div className="main-container">
