@@ -13,7 +13,7 @@ This app tracks which Prime Digital Academy alum were present at different alumn
 - HTML
 
 ## Future Plans
-- Add month and year selectors on main page
+- Add month and year filters on main page
 - Create dropdown to choose month and year
 - Implement cohort graduation dates
 
