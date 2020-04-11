@@ -87,6 +87,8 @@ export default function Attendance() {
     <div className="main-container">
       <h1>Attendance List</h1>
       <div>
+        <p style={{fontSize:"0.7em"}}>(this will have a month and year dropdown eventually)</p>
+        <br />
         <p>Which would you like to see?</p>
         <div className="choice-container">
           <div className="choice-sub-container">
