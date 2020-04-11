@@ -5,6 +5,32 @@
   font-family: "Interstate Light", sans-serif;
 }
 
+nav {
+  display: inline-block;
+  width: 100%;
+  height: 27px;
+  background-color: #07aa9e;
+  text-align: center;
+  padding-top: 10px;
+}
+
+nav .link {
+  color: black;
+  cursor: pointer;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-right: 1px solid black;
+  transition: 0.3s;
+}
+
+nav .link:hover {
+  background-color: #07968c;
+}
+
+nav .link:last-child {
+  border: none;
+}
+
 table {
   border-collapse: collapse;
   margin: 0 auto;
