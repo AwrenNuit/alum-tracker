@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import AddCohort from '../AddCohort/AddCohort';
 import AlumList from '../AlumList/AlumList';
 import Attendance from '../Attendance/Attendance';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export default function App() {
   return (
