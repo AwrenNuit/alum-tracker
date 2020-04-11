@@ -1,0 +1,10 @@
+.choice-container {
+  text-align: center;
+}
+
+.choice-sub-container {
+  display: inline-block;
+  width: 100px;
+  margin-top: 20px;
+  text-align: left;
+}

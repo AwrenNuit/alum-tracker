@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { db } from '../../firebase';
+import './Attendance.css';
 import AttendanceTally from '../AttendanceTally/AttendanceTally';
 import AttendanceNames from '../AttendanceNames/AttendanceNames';
-import { db } from '../../firebase';
-import { useSelector, useDispatch } from 'react-redux';
 
 export default function Attendance() {
 
@@ -11,9 +12,7 @@ export default function Attendance() {
   const allStandupData = useSelector(state => state.allStandupDataReducer);
   const [choice, setChoice] = useState('');
   const [month, setMonth] = useState([]);
-  const [scrumNames, setScrumNames] = useState([]);
   const [scrumTally, setScrumTally] = useState([]);
-  const [standupNames, setStandupNames] = useState([]);
   const [standupTally, setStandupTally] = useState([]);
 
   useEffect(()=>{
@@ -89,13 +88,32 @@ export default function Attendance() {
       <h1>Attendance List</h1>
       <div>
         <p>Which would you like to see?</p>
-        <div>
-          <input type="radio" name="choice" value="tally" onChange={(e)=>setChoice(e.target.value)} />
-            <label>Tally</label>
-        </div>
-        <div>
-          <input type="radio" name="choice" value="names" onChange={(e)=>setChoice(e.target.value)} />
-            <label>Names</label>
+        <div className="choice-container">
+          <div className="choice-sub-container">
+            <label style={{cursor:"pointer"}}>
+              <input 
+                style={{cursor:"pointer", marginRight:"10px"}}
+                type="radio" 
+                name="choice" 
+                value="tally" 
+                onChange={(e)=>setChoice(e.target.value)} 
+              />
+              Tally
+            </label>
+          </div>
+          <br />
+          <div className="choice-sub-container">
+            <label style={{cursor:"pointer"}}>
+              <input 
+                style={{cursor:"pointer", marginRight:"10px"}}
+                type="radio" 
+                name="choice" 
+                value="names" 
+                onChange={(e)=>setChoice(e.target.value)} 
+              />
+              Names
+            </label>
+          </div>
         </div>
       </div>
 
