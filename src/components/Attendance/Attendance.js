@@ -16,6 +16,7 @@ export default function Attendance() {
   const [standupTally, setStandupTally] = useState([]);
 
   useEffect(()=>{
+    dispatch({type: `CLEAR_TALLY_LIST`});
     db.ref('scrum').once(`value`, snap => {
       snap.forEach(child => {
         dispatch({type: `SET_SCRUM_LIST`, payload: {[child.key]: child.val()}});

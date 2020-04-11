@@ -16,6 +16,7 @@ export default function AlumList() {
   const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(()=>{
+    dispatch({type: `CLEAR_COHORT_LIST`});
     db.ref('cohorts').once(`value`, snap => {
       snap.forEach(child => {
         dispatch({type: `SET_COHORT_LIST`, payload: child.key});
