@@ -13,6 +13,7 @@ export default function AlumList() {
   const [standup, setStandup] = useState([]);
   const [thisCohort, setThisCohort] = useState([]);
   const [week, setWeek] = useState('');
+  const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(()=>{
     db.ref('cohorts').once(`value`, snap => {
@@ -88,8 +89,8 @@ export default function AlumList() {
   const handleSubmit = e => {
     e.preventDefault();
     if(cohortSelected !== '' && week !== ''){
-      db.ref(`/scrum/${month}_week_${week}/${cohortSelected}`).set(scrum);
-      db.ref(`/standup/${month}_week_${week}/${cohortSelected}`).set(standup);
+      db.ref(`/scrum/${year}_${month}_week_${week}/${cohortSelected}`).set(scrum);
+      db.ref(`/standup/${year}_${month}_week_${week}/${cohortSelected}`).set(standup);
       setCohortSelected('');
       setScrum([]);
       setStandup([]);
@@ -168,7 +169,7 @@ export default function AlumList() {
 
           <div className="list-select-month-week">
             <p>
-              {month}: Week&nbsp;
+              {year} {month} Week&nbsp;
               <select value={week} onChange={(e)=>setWeek(e.target.value)}>
                 <option value='' disabled>?</option>
                 <option value={1}>1</option>
