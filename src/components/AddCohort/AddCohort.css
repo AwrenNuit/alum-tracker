@@ -5,7 +5,7 @@
 
 .add-directions {
   display: inline-block;
-  max-width: 700px;
+  width: 500px;
   text-align: left;
   margin: 20px 0;
 }
