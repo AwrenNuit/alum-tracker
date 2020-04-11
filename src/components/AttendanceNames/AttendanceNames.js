@@ -47,12 +47,12 @@ export default function AttendanceNames(props) {
             <tr className="tr">
               <td className="td">{month.replace(/_/g, " ")}</td>
               <td className="td">Standup</td>
-              <td className="td">{standupTotal[i]}</td>
+              <td className="td td-names">{standupTotal[i]}</td>
             </tr>
             <tr className="tr">
               <td className="td">{month.replace(/_/g, " ")}</td>
               <td className="td">Scrum</td>
-              <td className="td">{scrumTotal[i]}</td>
+              <td className="td td-names">{scrumTotal[i]}</td>
             </tr>
           </tbody>
         )}
