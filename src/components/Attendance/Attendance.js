@@ -58,7 +58,7 @@ export default function Attendance() {
     <div className="main-container">
       <h1>Attendance List</h1>
       <div>
-        <p style={{fontSize:"0.7em"}}>(this will have a month and year dropdown eventually)</p>
+        <p style={{fontSize:"0.7em"}}>(this will eventually have a month and year dropdown to filter table results)</p>
         <br />
         <p>Which would you like to see?</p>
         <div className="choice-container">
