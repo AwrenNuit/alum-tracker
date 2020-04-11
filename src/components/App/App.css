@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   line-height: 1em;
+  font-family: "Interstate Light", sans-serif;
 }
 
 table {
@@ -17,9 +18,13 @@ tr {
   text-align: center;
 }
 
-th, td {
+td, th {
   border: 1px solid black;
   min-width: 200px;
+}
+
+th {
+  background-color: #07aa9e;
 }
 
 .main-container {
