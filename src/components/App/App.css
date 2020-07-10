@@ -15,11 +15,11 @@ nav {
 }
 
 nav .link {
-  color: black;
+  color: #000;
   cursor: pointer;
   padding: 10px 15px;
   text-decoration: none;
-  border-right: 1px solid black;
+  border-right: 1px solid #000;
   transition: 0.3s;
 }
 
@@ -27,8 +27,8 @@ nav .link:hover {
   background-color: #07968c;
 }
 
-nav .link:last-child {
-  border: none;
+nav .link:first-child {
+  border-left: 1px solid #000;
 }
 
 table {
@@ -37,7 +37,7 @@ table {
 }
 
 thead {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #000;
 }
 
 tr {
@@ -45,7 +45,7 @@ tr {
 }
 
 td, th {
-  border: 1px solid black;
+  border: 1px solid #000;
   min-width: 200px;
 }
 

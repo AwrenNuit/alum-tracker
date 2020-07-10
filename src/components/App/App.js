@@ -9,9 +9,9 @@ export default function App() {
   return (
     <Router>
       <nav>
-        <Link class="link" to="/">Home</Link>
-        <Link class="link" to="/present">Who Was There?</Link>
-        <Link class="link" to="/add-cohort">Add a Cohort</Link>
+        <Link className="link" to="/">Home</Link>
+        <Link className="link" to="/present">Who Was There?</Link>
+        <Link className="link" to="/add-cohort">Add a Cohort</Link>
       </nav>
       <Route exact path="/" component={Attendance} />
       <Route exact path="/add-cohort" component={AddCohort} />
