@@ -30,9 +30,9 @@ export default function AddCohort() {
 
   useEffect(() => {
     if (studentList[0] === "") {
-      setStudentList([newStudent]);
+      setStudentList([newStudent.replace(/^\s+|\s+$/g, "")]);
     } else {
-      setStudentList([...studentList, newStudent]);
+      setStudentList([...studentList, newStudent.replace(/^\s+|\s+$/g, "")]);
     }
     setNewStudent("");
   }, [count]);
@@ -81,8 +81,7 @@ export default function AddCohort() {
 
   return (
     <div className="main-container">
-      <h1>Add a Cohort</h1>
-
+      <h1>Add a Cohort</h1>{JSON.stringify(studentList)}
       <div className="add-directions-container">
         <div className="add-directions">
           <p style={{ fontWeight: "bold" }}>To use:</p>
@@ -135,7 +134,7 @@ export default function AddCohort() {
         <button
           className="add-student-btn"
           type="button"
-          onClick={() => setCount(count + 1)}
+          onClick={() => (newStudent.length > 0 ? setCount(count + 1) : null)}
         >
           Save & Add Another Student
         </button>
