@@ -37,3 +37,15 @@
 .add-student-btn:hover {
   background-color: #e0f7f4;
 }
+
+.cohort-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  width: 400px;
+}
+
+.cohort-grid label {
+  justify-self: end;
+  padding-right: 1rem;
+}
