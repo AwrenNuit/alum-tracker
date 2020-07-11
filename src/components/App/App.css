@@ -5,6 +5,11 @@
   font-family: "Interstate Light", sans-serif;
 }
 
+input,
+select {
+  font-size: 1.2rem;
+}
+
 nav {
   display: inline-block;
   width: 100%;
