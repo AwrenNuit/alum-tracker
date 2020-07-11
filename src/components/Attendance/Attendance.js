@@ -12,7 +12,8 @@ export default function Attendance() {
   const allScrumData = useSelector((state) => state.allScrumDataReducer);
   const allStandupData = useSelector((state) => state.allStandupDataReducer);
   const [choice, setChoice] = useState("");
-  const [month, setMonth] = useState([]);
+  const [activeMonths, setActiveMonths] = useState([]);
+  const [loggedMonths, setLoggedMonths] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("");
   const [scrumTally, setScrumTally] = useState([]);
   const [standupTally, setStandupTally] = useState([]);
@@ -42,6 +43,26 @@ export default function Attendance() {
     setData(allStandupData, setStandupTally);
   }, [allScrumData, allStandupData]);
 
+  useEffect(() => {
+    setActiveMonths(loggedMonths);
+  }, [loggedMonths]);
+
+  useEffect(() => {
+    if (selectedMonth === "all") {
+      setActiveMonths(loggedMonths);
+    } else if (
+      loggedMonths.some((item) =>
+        item.toLowerCase().includes(selectedMonth.toLowerCase())
+      )
+    ) {
+      setActiveMonths(
+        loggedMonths.filter((item) =>
+          item.toLowerCase().includes(selectedMonth.toLowerCase())
+        )
+      );
+    }
+  }, [selectedMonth]);
+
   const setData = (data, tally) => {
     let monthKey = "";
     let monthList = [];
@@ -58,7 +79,7 @@ export default function Attendance() {
         }
       }
     }
-    setMonth(monthList.flat(Infinity));
+    setLoggedMonths(monthList.flat(Infinity));
     tally(alumTally);
   };
 
@@ -91,7 +112,7 @@ export default function Attendance() {
 
       {choice === "tally" ? (
         <AttendanceTally
-          month={month}
+          month={activeMonths}
           scrumTally={scrumTally}
           standupTally={standupTally}
         />
@@ -100,7 +121,7 @@ export default function Attendance() {
       )}
       {choice === "names" ? (
         <AttendanceNames
-          month={month}
+          month={activeMonths}
           scrumNames={allScrumData}
           standupNames={allStandupData}
         />
