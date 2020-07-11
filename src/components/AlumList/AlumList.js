@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AlumList.css";
 import { db } from "../../firebase";
+import Directions from "./Directions";
+import Table from "./Table";
 
 export default function AlumList() {
   const dispatch = useDispatch();
@@ -142,26 +144,7 @@ export default function AlumList() {
   return (
     <div className="main-container">
       <h1>Who Was Present?</h1>
-
-      <div className="add-directions-container">
-        <div className="add-directions">
-          <p style={{ fontWeight: "bold" }}>To use:</p>
-          <div className="add-directions-list">
-            <ul>
-              <li>Select a cohort</li>
-              <li>Select the week of the month you are logging</li>
-              <li>Use checkboxes to choose who was present</li>
-              <li>Click "Submit"</li>
-              <li>Rinse & repeat for each cohort who had students present</li>
-              <li>
-                You can re-submit it to overwrite the existing data in case you
-                made a mistake
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+      <Directions />
       <form onSubmit={handleSubmit}>
         <div className="list-select-container">
           <div className="list-select-cohort">
@@ -194,20 +177,7 @@ export default function AlumList() {
             </p>
           </div>
         </div>
-
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Alum Standup</th>
-                <th>Alum Scrum</th>
-              </tr>
-            </thead>
-            <tbody>{populateTable()}</tbody>
-          </table>
-        </div>
-
+        <Table populateTable={populateTable} />
         <div className="list-form-btn-container">
           <button className="submit-btn" type="submit">
             Submit
