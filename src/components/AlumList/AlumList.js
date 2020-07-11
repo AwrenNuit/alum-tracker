@@ -4,6 +4,7 @@ import "./AlumList.css";
 import { db } from "../../firebase";
 import Directions from "./Directions";
 import Table from "./Table";
+import MonthSelect from "../MonthSelect/MonthSelect";
 
 export default function AlumList() {
   const dispatch = useDispatch();
@@ -43,32 +44,6 @@ export default function AlumList() {
 
   const setCurrentMonth = () => {
     setMonth(new Date().toLocaleString("default", { month: "long" }));
-  };
-
-  const setMonthOptions = () => {
-    const monthList = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    let output = [];
-    for (let i = 0; i < monthList.length; i++) {
-      output.push(
-        <option key={i} value={monthList[i]}>
-          {monthList[i]}
-        </option>
-      );
-    }
-    return output;
   };
 
   const setWeekOptions = () => {
@@ -164,9 +139,7 @@ export default function AlumList() {
           <div className="list-select-month-week">
             <p>
               {year}
-              <select value={month} onChange={(e) => setMonth(e.target.value)}>
-                {setMonthOptions()}
-              </select>
+              <MonthSelect setter={setMonth} val={month} />
               &nbsp;Week&nbsp;
               <select value={week} onChange={(e) => setWeek(e.target.value)}>
                 <option value="" disabled>
