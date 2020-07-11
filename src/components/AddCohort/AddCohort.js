@@ -74,7 +74,7 @@ export default function AddCohort() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newCohort !== "" && graduationDate !== "" && studentList !== "") {
+    if (newCohort !== "" && graduationDate !== "" && studentList.length > 0) {
       db.ref(`/cohorts/${newCohort}`).set({
         graduation: graduationDate,
         studentList,
@@ -85,6 +85,12 @@ export default function AddCohort() {
       setNewStudent("");
       setStudentList("");
       setCount(1);
+    } else if(newCohort === "") {
+      alert(`Please name the cohort. You have the power...don't abuse it ;)`);
+    } else if(graduationDate === "") {
+      alert(`Please give this cohort a graduation date or else they'll be very sad :(`);
+    }else if(studentList.length < 1) {
+      alert(`Please add students or the instructor will have an existential crisis :o`);
     }
   };
 
