@@ -17,16 +17,8 @@ export default function AddCohort() {
     db.ref("cohorts").once(`value`, (snap) => {
       snap.forEach((child) => {
         dispatch({ type: `SET_COHORT_LIST`, payload: child.key });
-        // console.log('db child:', child.key); // For cohort list by key
       });
     });
-
-    // db.ref('cohorts/Trifid').once(`value`, snap => {
-    //   snap.forEach(child => {
-    //     // dispatch({type: `SET_THIS_COHORT`, payload: child.val()});
-    //     console.log('db child:', child.val()); // for data in this document
-    //   });
-    // });
   }, []);
 
   useEffect(() => {
