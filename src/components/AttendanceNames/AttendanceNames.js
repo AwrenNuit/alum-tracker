@@ -24,7 +24,7 @@ export default function AttendanceNames(props) {
       cohorts = Object.keys(names[i][prevMonth]);
 
         for(let j=0; j<cohorts.length; j++) {
-          alum.push(<b> {cohorts[j]}: </b>, names[i][prevMonth][cohorts[j]].join(', '),);
+          alum.push(<b key={j}> {cohorts[j]}: </b>, names[i][prevMonth][cohorts[j]].join(', '),);
         }
         output.push(alum.flat(Infinity));
         alum = [];
