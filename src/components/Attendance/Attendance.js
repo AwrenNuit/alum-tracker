@@ -4,6 +4,7 @@ import { db } from "../../firebase";
 import "./Attendance.css";
 import AttendanceTally from "../AttendanceTally/AttendanceTally";
 import AttendanceNames from "../AttendanceNames/AttendanceNames";
+import RadioToggle from "./RadioToggle";
 
 export default function Attendance() {
   const dispatch = useDispatch();
@@ -62,41 +63,7 @@ export default function Attendance() {
   return (
     <div className="main-container">
       <h1>Attendance List</h1>
-      <div>
-        <p style={{ fontSize: "0.7em" }}>
-          (this will eventually have a month and year dropdown to filter table
-          results)
-        </p>
-        <br />
-        <p>Which would you like to see?</p>
-        <div className="choice-container">
-          <div className="choice-sub-container">
-            <label style={{ cursor: "pointer" }}>
-              <input
-                style={{ cursor: "pointer", marginRight: "10px" }}
-                type="radio"
-                name="choice"
-                value="tally"
-                onChange={(e) => setChoice(e.target.value)}
-              />
-              Tally
-            </label>
-          </div>
-          <br />
-          <div className="choice-sub-container">
-            <label style={{ cursor: "pointer" }}>
-              <input
-                style={{ cursor: "pointer", marginRight: "10px" }}
-                type="radio"
-                name="choice"
-                value="names"
-                onChange={(e) => setChoice(e.target.value)}
-              />
-              Names
-            </label>
-          </div>
-        </div>
-      </div>
+      <RadioToggle setter={setChoice} />
 
       {choice === "tally" ? (
         <AttendanceTally
