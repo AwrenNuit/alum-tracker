@@ -44,16 +44,21 @@ export default function AddCohort() {
         <div className="add-student cohort-grid" key={i}>
           <label>Student #{i}: </label>
           <input
-            type="text"
-            value={studentList[i - 1] || newStudent}
+            autoFocus
             onChange={(e) => setNewStudent(e.target.value)}
             placeholder="student name"
-            autoFocus
+            type="text"
+            value={studentList[i - 1] || newStudent}
           />
         </div>
       );
     }
     return output;
+  };
+
+  const addStudentToList = () => {
+    document.getElementsByTagName("input")[count + 1].disabled = true;
+    setCount(count + 1);
   };
 
   const checkAgainstList = () => {
@@ -81,7 +86,7 @@ export default function AddCohort() {
 
   return (
     <div className="main-container">
-      <h1>Add a Cohort</h1>{JSON.stringify(studentList)}
+      <h1>Add a Cohort</h1>
       <div className="add-directions-container">
         <div className="add-directions">
           <p style={{ fontWeight: "bold" }}>To use:</p>
@@ -134,7 +139,7 @@ export default function AddCohort() {
         <button
           className="add-student-btn"
           type="button"
-          onClick={() => (newStudent.length > 0 ? setCount(count + 1) : null)}
+          onClick={() => (newStudent.length > 0 ? addStudentToList() : null)}
         >
           Save & Add Another Student
         </button>
