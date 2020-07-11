@@ -4,7 +4,7 @@ export default function RadioToggle(props) {
   return (
     <>
       <div className="choice-sub-container">
-        <label style={{ cursor: "pointer" }}>
+        <label style={{ cursor: "pointer", fontSize: "1.2rem" }}>
           <input
             style={{ cursor: "pointer", marginRight: "10px" }}
             type="radio"

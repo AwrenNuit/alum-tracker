@@ -5,6 +5,7 @@ import "./Attendance.css";
 import AttendanceTally from "../AttendanceTally/AttendanceTally";
 import AttendanceNames from "../AttendanceNames/AttendanceNames";
 import RadioToggle from "./RadioToggle";
+import MonthSelect from "../MonthSelect/MonthSelect";
 
 export default function Attendance() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ export default function Attendance() {
   const allStandupData = useSelector((state) => state.allStandupDataReducer);
   const [choice, setChoice] = useState("");
   const [month, setMonth] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState("");
   const [scrumTally, setScrumTally] = useState([]);
   const [standupTally, setStandupTally] = useState([]);
 
@@ -69,7 +71,8 @@ export default function Attendance() {
           results)
         </p>
         <br />
-        <p>Which would you like to see?</p>
+        <p style={{ fontSize: "1.2rem" }}>Which would you like to see?</p>
+        <MonthSelect setter={setSelectedMonth} val={selectedMonth} />
         <div className="choice-container">
           <RadioToggle
             setter={setChoice}
