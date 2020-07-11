@@ -29,10 +29,14 @@ export default function AddCohort() {
   }, []);
 
   useEffect(() => {
-    if (studentList[0] === "") {
-      setStudentList([newStudent.replace(/^\s+|\s+$/g, "")]);
+    if (count === 1) {
+      return;
     } else {
-      setStudentList([...studentList, newStudent.replace(/^\s+|\s+$/g, "")]);
+      if (studentList.length === 0) {
+        setStudentList([newStudent.replace(/^\s+|\s+$/g, "")]);
+      } else {
+        setStudentList([...studentList, newStudent.replace(/^\s+|\s+$/g, "")]);
+      }
     }
     setNewStudent("");
   }, [count]);
@@ -107,7 +111,11 @@ export default function AddCohort() {
           </div>
           <div style={{ marginTop: "20px" }}>
             <p style={{ fontWeight: "bold" }}>Current students:&nbsp;</p>
-            {studentList.length !== 0 ? studentList.join(", ") : ""}
+            {studentList.length > 0 ? (
+              <span>{studentList.join(", ")}</span>
+            ) : (
+              <span>None</span>
+            )}
           </div>
         </div>
       </div>
@@ -131,11 +139,8 @@ export default function AddCohort() {
             onChange={(e) => setGraduationDate(e.target.value)}
           />
         </div>
-
         {/* add DELETE button next to input field to remove from hook */}
         {addStudentInput()}
-
-        {/* display msg that student was saved, disable input field */}
         <button
           className="add-student-btn"
           type="button"
