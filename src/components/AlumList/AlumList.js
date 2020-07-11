@@ -39,8 +39,47 @@ export default function AlumList() {
     });
   };
 
-  const setCurrentMonth = () =>
-    setMonth(date.toLocaleString("default", { month: "long" }));
+  const setCurrentMonth = () => {
+    setMonth(new Date().toLocaleString("default", { month: "long" }));
+  };
+
+  const setMonthOptions = () => {
+    const monthList = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    let output = [];
+    for (let i = 0; i < monthList.length; i++) {
+      output.push(
+        <option key={i} value={monthList[i]}>
+          {monthList[i]}
+        </option>
+      );
+    }
+    return output;
+  };
+
+  const setWeekOptions = () => {
+    let output = [];
+    for (let i = 1; i < 6; i++) {
+      output.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
+    }
+    return output;
+  };
 
   const handleCheckbox = (e, hook, set) => {
     const name = e.target.value;
@@ -141,16 +180,16 @@ export default function AlumList() {
 
           <div className="list-select-month-week">
             <p>
-              {year} {month} Week&nbsp;
+              {year}
+              <select value={month} onChange={(e) => setMonth(e.target.value)}>
+                {setMonthOptions()}
+              </select>
+              &nbsp;Week&nbsp;
               <select value={week} onChange={(e) => setWeek(e.target.value)}>
                 <option value="" disabled>
                   ?
                 </option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
+                {setWeekOptions()}
               </select>
             </p>
           </div>
