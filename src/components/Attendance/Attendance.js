@@ -63,7 +63,28 @@ export default function Attendance() {
   return (
     <div className="main-container">
       <h1>Attendance List</h1>
-      <RadioToggle setter={setChoice} />
+      <div>
+        <p style={{ fontSize: "0.7em" }}>
+          (this will eventually have a month and year dropdown to filter table
+          results)
+        </p>
+        <br />
+        <p>Which would you like to see?</p>
+        <div className="choice-container">
+          <RadioToggle
+            setter={setChoice}
+            label="Tally"
+            val="tally"
+            name="display"
+          />
+          <RadioToggle
+            setter={setChoice}
+            label="Names"
+            val="names"
+            name="display"
+          />
+        </div>
+      </div>
 
       {choice === "tally" ? (
         <AttendanceTally
