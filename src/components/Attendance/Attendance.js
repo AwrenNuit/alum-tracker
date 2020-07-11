@@ -39,8 +39,8 @@ export default function Attendance() {
   }, []);
 
   useEffect(() => {
-    setData(allScrumData, setScrumTally);
-    setData(allStandupData, setStandupTally);
+    initializeData(allScrumData, setScrumTally);
+    initializeData(allStandupData, setStandupTally);
   }, [allScrumData, allStandupData]);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Attendance() {
     }
   }, [selectedMonth]);
 
-  const setData = (data, tally) => {
+  const initializeData = (data, tally) => {
     let monthKey = "";
     let monthList = [];
     let cohortKey = "";
