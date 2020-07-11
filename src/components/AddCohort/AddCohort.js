@@ -85,12 +85,17 @@ export default function AddCohort() {
       setNewStudent("");
       setStudentList("");
       setCount(1);
-    } else if(newCohort === "") {
+      document.getElementsByTagName("input")[2].disabled = false;
+    } else if (newCohort === "") {
       alert(`Please name the cohort. You have the power...don't abuse it ;)`);
-    } else if(graduationDate === "") {
-      alert(`Please give this cohort a graduation date or else they'll be very sad :(`);
-    }else if(studentList.length < 1) {
-      alert(`Please add students or the instructor will have an existential crisis :o`);
+    } else if (graduationDate === "") {
+      alert(
+        `Please give this cohort a graduation date or else they'll be very sad :(`
+      );
+    } else if (studentList.length < 1) {
+      alert(
+        `Please add students or the instructor will have an existential crisis :o`
+      );
     }
   };
 
