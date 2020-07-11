@@ -139,7 +139,11 @@ export default function AlumList() {
           <div className="list-select-month-week">
             <p>
               {year}
-              <MonthSelect setter={setMonth} val={month} />
+              <MonthSelect
+                placeholderVal={true}
+                setter={setMonth}
+                val={month}
+              />
               &nbsp;Week&nbsp;
               <select value={week} onChange={(e) => setWeek(e.target.value)}>
                 <option value="" disabled>

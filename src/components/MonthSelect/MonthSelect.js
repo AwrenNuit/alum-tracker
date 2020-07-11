@@ -29,9 +29,13 @@ export default function MonthSelect(props) {
 
   return (
     <select value={props.val} onChange={(e) => props.setter(e.target.value)}>
-      <option value="all">
-        All Months
-      </option>
+      {props.placeholderVal ? (
+        <option value="" disabled>
+          Month
+        </option>
+      ) : (
+        <option value="all">All Months</option>
+      )}
       {setMonthOptions()}
     </select>
   );
