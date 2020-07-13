@@ -22,10 +22,13 @@ export default function AttendanceTally(props) {
       if (alum.length < 1 || (alum.length < 1 && prevMonth !== key)) {
         alum.push(tally[i][key]);
         prevMonth = key;
+      } else if (i === tally.length - 1 && prevMonth !== key) {
+        alum = [];
+        alum.push(tally[i][key]);
+        output.push(alum.flat(Infinity).length);
       } else if (i === tally.length - 1) {
         alum.push(tally[i][key]);
         output.push(alum.flat(Infinity).length);
-        alum = [];
       } else if (prevMonth !== key) {
         output.push(alum.flat(Infinity).length);
         alum = [];
