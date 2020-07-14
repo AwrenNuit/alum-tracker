@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "../../firebase";
 import "./App.css";
 import AddCohort from "../AddCohort/AddCohort";
@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 
 export default function App() {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     getCurrentUser().then((user) => {
@@ -23,7 +24,7 @@ export default function App() {
 
   return (
     <Router>
-      <Header />
+      {user.length ? <Header /> : null}
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/attendance" component={Attendance} />

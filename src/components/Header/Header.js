@@ -1,14 +1,22 @@
-import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { logoutUser } from '../../firebase';
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
+import { logoutUser } from "../../firebase";
+import { useDispatch } from "react-redux";
 
 export default function Header() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   async function handleLogout() {
-    await logoutUser();
-    history.push('/');
+    try {
+      await logoutUser();
+      dispatch({ type: `UNSET_USER` });
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   return(
     <nav>
       <Link className="link" to="/attendance">Attendance</Link>
