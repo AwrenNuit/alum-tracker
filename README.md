@@ -15,8 +15,6 @@ This app tracks which Prime Digital Academy alum were present at different alumn
 ## Future Plans
 
 - Have the ability to add an "employed" tag to alum as they gain employment
-- Add month and year filters on main page
-- Create dropdown to choose month and year
 - Implement cohort graduation dates
 - Edit and/or Delete options for already-added cohort students
 
