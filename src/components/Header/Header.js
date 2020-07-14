@@ -14,7 +14,7 @@ export default function Header() {
       <Link className="link" to="/attendance">Attendance</Link>
       <Link className="link" to="/who-was-there">Who Was There?</Link>
       <Link className="link" to="/add-cohort">Add a Cohort</Link>
-      <button className="logout-btn" onClick={handleLogout}>Logout</button>
+      <button className="logout" onClick={handleLogout}>Logout</button>
     </nav>
   );
 }

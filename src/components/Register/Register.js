@@ -18,7 +18,7 @@ export default function Register() {
     }
     const res = await registerUser(email, password);
     if (res) {
-      history.push("/home");
+      history.push("/attendance");
     }
   }
 
