@@ -1,0 +1,27 @@
+.login-container {
+  background-color: #eee;
+  border: 10px solid #07aa9e;
+  border-radius: 10px;
+  color: #07aa9e;
+  left: 50%;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+}
+
+.input-container {
+  margin: 1rem auto;
+  width: 250px;
+}
+
+.input-container input {
+  width: 250px;
+}
+
+.login-label {
+  display: block;
+  text-align: left;
+}

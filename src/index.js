@@ -37,6 +37,17 @@ const cohortListReducer = (state=[], action) => {
   }
 }
 
+const userReducer = (state={}, action: any) => {
+  switch(action.type){
+    case `SET_USER`:
+      return action.payload;
+    case `UNSET_USER`:
+      return {};
+    default:
+      return state;
+  }
+}
+
 const store = createStore(
   combineReducers({
     allScrumDataReducer,
